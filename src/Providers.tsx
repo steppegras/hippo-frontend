@@ -5,6 +5,11 @@ import { ErrorBoundary } from 'components';
 import reducer from 'modules/rootReducer';
 import { AptosWalletProvider } from 'contexts/AptosWalletProvider';
 import { HippoClientProvider } from 'contexts/HippoClientProvider';
+import { WalletProvider } from 'components/WalletAdapter/WalletProvider';
+import { useMemo } from 'react';
+import { HippoWalletAdapter } from 'components/WalletAdapter/Adapters/HippoWallet';
+import { MartianWalletAdapter } from 'components/WalletAdapter/Adapters/MartianWallet';
+import { AptosWalletAdapter } from 'components/WalletAdapter/Adapters/AptosWallet';
 
 const isDevelopmentMode = process.env.NODE_ENV === 'development';
 
@@ -25,13 +30,24 @@ type TProps = {
 };
 
 const Providers: React.FC<TProps> = (props: TProps) => {
+  const wallets = useMemo(
+    () => [
+      new HippoWalletAdapter({ provider: 'https://hippo-wallet-test.web.app/' }),
+      new MartianWalletAdapter(),
+      new AptosWalletAdapter()
+    ],
+    []
+  );
+
   return (
     <ErrorBoundary>
-      <AptosWalletProvider>
-        <HippoClientProvider>
-          <ReduxProvider store={store}>{props.children}</ReduxProvider>
-        </HippoClientProvider>
-      </AptosWalletProvider>
+      <WalletProvider wallets={wallets}>
+        <AptosWalletProvider>
+          <HippoClientProvider>
+            <ReduxProvider store={store}>{props.children}</ReduxProvider>
+          </HippoClientProvider>
+        </AptosWalletProvider>
+      </WalletProvider>
     </ErrorBoundary>
   );
 };
