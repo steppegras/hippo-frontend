@@ -108,7 +108,7 @@ const PositiveFloatNumInput: FC<PositiveFloatNumInputProps> = ({
 
   return (
     <input
-      className={classNames('positiveFloatNumInput', 'px-1 focus: outline-none', className)}
+      className={classNames('positiveFloatNumInput', 'px-1 focus: outline-none min-w-0', className)}
       value={displayText}
       placeholder={placeholder}
       inputMode="decimal"

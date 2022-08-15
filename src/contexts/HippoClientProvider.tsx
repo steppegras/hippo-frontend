@@ -174,7 +174,6 @@ const HippoClientProvider: FC<TProviderProps> = ({ children }) => {
         const payload = routeAndQuote.route.makePaylod(input, minOut);
         const result = await signAndSubmitTransaction(payload);
         if (result) {
-          message.success('Transaction Success');
           openNotification(result.hash);
           setRefresh(true);
           success = true;

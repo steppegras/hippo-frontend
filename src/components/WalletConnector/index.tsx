@@ -1,7 +1,6 @@
 import Button from 'components/Button';
 import useAptosWallet from 'hooks/useAptosWallet';
 import { walletAddressEllipsis } from 'utils/utility';
-import { CaretIcon } from 'resources/icons';
 import { Popover } from 'components/Antd';
 import styles from './WalletConnector.module.scss';
 // import WebWallet from 'components/WebWallet';
@@ -36,14 +35,13 @@ const WalletConnector: React.FC = () => {
         <div className="flex gap-4 items-center">
           <Button
             variant="outlined"
-            className="min-w-[156px] h-10 !text-grey-900 font-bold"
+            className="min-w-[156px] h-10 font-bold"
             // onClick={!address ? toggleConnectModal : undefined}
           >
             {activeWallet
               ? walletAddressEllipsis(activeWallet.toString() || '')
               : 'Connect To Wallet'}
           </Button>
-          <CaretIcon className="fill-black" />
         </div>
       </Popover>
     </>

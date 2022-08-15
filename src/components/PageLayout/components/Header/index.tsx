@@ -99,7 +99,11 @@ const PageHeader: React.FC = () => {
           className="hidden w-[24px] h-[24px] mr-4 mobile:inline-block"
           onClick={() => setIsSideMenuOpen(true)}
         />
-        <div className="h-full absolute left-0 top-0 mobile:relative">
+        <div
+          className={classNames(
+            'h-full absolute left-0 top-0 mobile:left-1/2 mobile:-translate-x-1/2',
+            { 'mobile:hidden': currentPageName !== 'Home' }
+          )}>
           <Link to="/" className="h-full flex items-center justify-center">
             <LogoIcon className="w-auto h-[48px] mobile:h-full" />
           </Link>

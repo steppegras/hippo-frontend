@@ -259,7 +259,7 @@ const TokenSwap = () => {
   }, [values, setFieldValue]);
 
   return (
-    <div className="w-full flex flex-col px-8 gap-1">
+    <div className="w-full flex flex-col px-8 gap-1 mobile:px-4">
       <div className="largeTextBold mb-2 flex">
         <div className="mr-auto">Pay</div>
       </div>

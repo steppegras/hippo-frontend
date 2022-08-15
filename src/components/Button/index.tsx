@@ -9,7 +9,7 @@ type TProps = {
   isLoading?: boolean;
   variant?: 'solid' | 'outlined' | 'icon' | 'gradient';
   type?: 'button' | 'submit' | 'reset' | undefined;
-  onClick?: (e: React.MouseEvent<HTMLElement>) => {} | void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => any;
 };
 
 const Button: React.FC<TProps> = (props) => {
